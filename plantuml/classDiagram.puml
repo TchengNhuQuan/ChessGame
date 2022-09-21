@@ -1,0 +1,150 @@
+@startuml chess
+
+class Board {
+ -rowNumbers: Integer
+ -columnNumbers: Interger
+ -rows: Row[]
+ ---
+ -initRows()
+ -initChess()
+ -renderChess()
+ -putChess(x, y, currentPiece)
+ +initElement()
+ +render()
+}
+
+class Cell {
+ -x: Integer
+ -y: Integer
+ -color: String
+ -Piece: Null
+ -isActive: Boolean
+ -Color : string<<gray | white>>
+ ---
+ +setPiece(currentPiece)
+ +initElement(currenColor)
+}
+
+class Piece {
+ -pieceName: String
+ -imageUrl: String
+ -isWhite: Boolean
+ -isKilled: Boolean
+ -canMove(Board board, Cell start, Cell end): boolean
+}
+
+class Users {
+  -name : String
+  -isWhiteSide : Boolean
+  ---
+  +chooseSide()
+  +chooseTimer()
+  +chooseLevel()
+}
+
+
+class Move {
+ -user : User
+ -start : Cell
+ -end : Cell
+ -pieceMove : Piece
+ -pieceKilled : Piece
+
+}
+
+class Game {
+ -statusGame: String
+ -board: Board
+ -user: User[]
+ -currentTurn: User
+ -move: Move[]
+ -timer: Interger
+ -level: String
+ ---
+ +startGame()
+ +endGame()
+ playerMove(player, startX, startY, endX, endY)
+
+}
+
+class Row {
+ -line: Integer
+ -cell: Cell
+ ---
+ +initElement()
+ +render()
+}
+
+class Pawn {
+ -pieceName: String
+ -imageUrl: String
+ -isWhite: Boolean
+ -isKilled: Boolean
+ ---
+ -canMove(Board board, Cell start, Cell end): boolean
+}
+
+class Rook {
+ -pieceName: String
+ -imageUrl: String
+ -isWhite: Boolean
+ -isKilled: Boolean
+ ---
+ -canMove(Board board, Cell start, Cell end): boolean
+
+}
+
+class Knight {
+ -pieceName: String
+ -imageUrl: String
+ -isWhite: Boolean
+ -isKilled: Boolean
+---
+ -canMove(Board board, Cell start, Cell end): boolean
+}
+
+class Bishop {
+ -pieceName: String
+ -imageUrl: String
+ -isWhite: Boolean
+ -isKilled: Boolean
+ ---
+ -canMove(Board board, Cell start, Cell end): boolean
+}
+
+class Queen {
+ -pieceName: String
+ -imageUrl: String
+ -isWhite: Boolean
+ -isKilled: Boolean
+ ---
+ -canMove(Board board, Cell start, Cell end): boolean
+}
+
+class King {
+ -pieceName: String
+ -imageUrl: String
+ -isWhite: Boolean
+ -isKilled: Boolean
+ ---
+ -canMove(Board board, Cell start, Cell end): boolean
+}
+
+Game -- Board
+Game-- Users
+Game -- Move
+
+Row-- Cell
+
+Board *-- Row
+Board *--Piece
+
+Piece <|-- Pawn
+Piece <|-- Rook
+Piece <|-- Knight
+Piece <|-- Bishop
+Piece <|-- Queen
+Piece <|-- King
+
+
+@enduml

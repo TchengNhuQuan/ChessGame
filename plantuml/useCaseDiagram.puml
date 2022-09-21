@@ -1,0 +1,28 @@
+@startuml chess-behavior
+ left to right direction
+ actor Player as player 
+ package ChessGame {
+ usecase "Play game" as playGame
+ usecase "Chat" as chat
+ }
+
+ left to right direction
+ package IncludeFeatures {
+  playGame .> (Choose side) : include
+  (Choose side) .> (Choose level) : include
+  (Choose level) .> (Set timer) : include
+ }
+ package ExtendFeatures {
+   (Hint) .> playGame : extends
+   (Surrender) .> (Redo) : extends
+   (Restart game) .> (Surrender) : extends
+   (Hint) .> (Restart game) : extends
+ }
+
+
+player --> playGame
+player --> chat
+
+
+
+@enduml
