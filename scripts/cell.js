@@ -4,12 +4,19 @@ function Cell(x, y, color) {
   this.color = color;
   this.piece = null;
   this.isActive = false;
+  this.isSelected = false;
   this.block = initElement(color);
 
   this.setPiece = function (currentPiece) {
     this.piece = currentPiece;
   };
 
+  this.getPositionX = function () {
+    return this.x;
+  }
+  this.getPositionY = function () {
+    return this.y;
+  }
   function initElement(currentColor) {
     // init cell
     const cellElement = document.createElement("div");
@@ -26,6 +33,18 @@ function Cell(x, y, color) {
       this.block.appendChild(this.piece.block);
     }
   }
+
+  this.block.addEventListener("click", (event) => this.validateMove(event));
+  this.validateMove = function(event) {
+    console.log(this.piece.getName());
+    switch(this.piece.getName()) {
+      case "pawn": 
+        this.piece.checkPawnMove(this.getPositionX(), this.getPositionY(), event);
+    }
+  }
+
+
+
 }
 
   

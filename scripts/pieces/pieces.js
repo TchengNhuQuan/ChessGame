@@ -22,8 +22,16 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
     imgElement.style.height = "70px";
     imgElement.style.width = "70px";
     imgElement.style.transform = "translate(-50%, -50%)";
+    // imgElement.addEventListener("click", function(){
+    //   imgElement.style.width = "50px";
+    //   imgElement.style.bottom = "50px";
+
+    // } )
+
+
     return imgElement;
   }
+
 
 }
 

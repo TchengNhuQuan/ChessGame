@@ -121,6 +121,7 @@ function Board() {
     this.initChess();
   // xu ly DOM
     this.render();
+    console.log(this.rows);
   };
 
   function initElement() {
