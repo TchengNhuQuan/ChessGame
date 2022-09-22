@@ -17,6 +17,7 @@ function Cell(x, y, color) {
     cellElement.style.height = "80px";
     cellElement.style.position = "relative";
     cellElement.style.backgroundColor = currentColor;
+    cellElement.style.display = "inline-block";
     return cellElement;
   }
 

@@ -19,8 +19,8 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
     imgElement.style.position = "absolute";
     imgElement.style.top = "50%";
     imgElement.style.left = "50%";
-    imgElement.style.height = "50px";
-    imgElement.style.width = "50px";
+    imgElement.style.height = "70px";
+    imgElement.style.width = "70px";
     imgElement.style.transform = "translate(-50%, -50%)";
     return imgElement;
   }

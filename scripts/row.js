@@ -15,8 +15,6 @@ function Row(line) {
     const rowElement = document.createElement("div");
     rowElement.style.width = "640px";
     rowElement.style.height = "80px";
-    rowElement.style.display = "flex";
-    rowElement.style.flexWrap = "wrap";
 
     return rowElement;
   }

@@ -17,9 +17,9 @@ function Board() {
       const currentCells = [];
       for (let columnNumber = 0; columnNumber < this.columnNumbers; columnNumber++) {
         if (rowNumber % 2 == 0) {
-          color = columnNumber % 2 == 0 ? "white" : "gray";
+          color = columnNumber % 2 == 0 ? "#EEEED2" : "#4B7399";
         } else {
-          color = columnNumber % 2 == 0 ? "gray" : "white";
+          color = columnNumber % 2 == 0 ? "#4B7399" : "#EEEED2";
         }
         const cell = new Cell(columnNumber, rowNumber, color);
         currentCells.push(cell);
@@ -36,9 +36,17 @@ function Board() {
     // đặt quân cờ bằng private method
     const whiteKing = new King(true);
     this.putChess(7, 4, whiteKing);
-
-    const blackKing = new King(false);
-    this.putChess(0, 4, blackKing);
+    for (let rowNumber = 0; rowNumber < this.rowNumbers; rowNumber++) {
+      if (rowNumber == 0) {
+        for (let columnNumber = 0; columnNumber < this.columnNumbers; columnNumber++) {
+          if (columnNumber == 4) {
+            this.putChess(rowNumber, columnNumber, new King(false))
+          }
+        }
+      }
+    }
+    // const blackKing = new King(false);
+    // this.putChess(0, 4, blackKing);
 
     const whiteQueen = new Queen(true);
     this.putChess(7, 3, whiteQueen);
@@ -50,7 +58,7 @@ function Board() {
     this.putChess(7, 2, whiteBishop1);
 
     const whiteBishop2 = new Bishop(true);
-    this.putChess(0, 5, whiteBishop2);
+    this.putChess(7, 5, whiteBishop2);
 
     const blackBishop1 = new Bishop(false);
     this.putChess(0, 2, blackBishop1);
@@ -82,14 +90,21 @@ function Board() {
     const blackRook2 = new Rook(false);
     this.putChess(0, 7, blackRook2);
     
+    for (let rowNumber = 0; rowNumber <= this.rowNumbers; rowNumber++) {
+      if (rowNumber == 6) {
+        let y = 0;
+        for (let y = 0; y <= 7; y++) {
+          this.putChess(rowNumber, y, new Pawn(true));
+        }
+      }
 
-
-
-
-
-    console.log(this.rows);
-    console.log(whiteKing.getName());
-    // xu ly khoi tao quan co
+      if (rowNumber == 1) {
+        let y = 0;
+        for (let y = 0; y <= 7; y++) {
+          this.putChess(rowNumber, y, new Pawn(false));
+        }
+      }
+    }
   };
 
   // public method
@@ -113,7 +128,8 @@ function Board() {
     boardElement.style.display = "flex";
     boardElement.style.width = "640px";
     boardElement.style.height = "640px";
-    boardElement.style.border = "3px solid black";
+    boardElement.style.border = "2px solid black";
+    boardElement.style.flexWrap = "wrap";
 
     return boardElement;
   }
