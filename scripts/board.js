@@ -21,7 +21,7 @@ function Board() {
         } else {
           color = columnNumber % 2 == 0 ? "#4B7399" : "#EEEED2";
         }
-        const cell = new Cell(columnNumber, rowNumber, color);
+        const cell = new Cell(rowNumber, columnNumber, color);
         currentCells.push(cell);
       }
       row.cells = currentCells;
@@ -113,6 +113,7 @@ function Board() {
       row.render(); // y la cai render tu dong row
       this.block.appendChild(row.block);
     }
+    console.log(this.rows);
   };
 
   this.init = function () {
@@ -121,7 +122,6 @@ function Board() {
     this.initChess();
   // xu ly DOM
     this.render();
-    console.log(this.rows);
   };
 
   function initElement() {
@@ -129,10 +129,14 @@ function Board() {
     boardElement.style.display = "flex";
     boardElement.style.width = "640px";
     boardElement.style.height = "640px";
-    boardElement.style.border = "2px solid black";
+    boardElement.style.border = "1px solid #312E2B";
     boardElement.style.flexWrap = "wrap";
 
     return boardElement;
+  }
+
+  function changeCellColor(cellList) {
+
   }
 }
 

@@ -6,15 +6,29 @@ function Pawn(isWhite, isKilled = false) {
     
   }
 
-  this.checkPawnMove=function(x, y, event){
-      if(board.rows[x] == 1){
-        board.rows[x].cells[y].isSelected = "true";
-        board.rows[x].cells[y + 1].color="yellow"
-        board.rows[x].cells[y + 2].color="yellow"
-      }
+  this.checkPawnMove = function(x, y, checkIsWhite, event){
+    if(checkIsWhite == false){
+      board.rows[x].cells[y].isSelected = true;
+      board.rows[x].cells[y].color="#BACA2B";
 
-      board.render();
-      // console.log(board[x-1].cells[y])
+      board.rows[x + 1].cells[y].isHintMove = true;
+      board.rows[x + 2].cells[y].isHintMove = true;
+
+      board.rows[x + 1].cells[y].color="#BACA2B";
+      board.rows[x + 2].cells[y].color="#BACA2B";
+      
+    } else if (checkIsWhite  == true) {
+      board.rows[x].cells[y].isSelected = true;
+      board.rows[x].cells[y].color="#BACA2B";
+
+      board.rows[x - 1].cells[y].isHintMove = true;
+      board.rows[x - 2].cells[y].isHintMove = true;
+
+      board.rows[x - 1].cells[y].color="#BACA2B";
+      board.rows[x - 2].cells[y].color="#BACA2B";
+    }
+
+    board.render();
 
   }
 }

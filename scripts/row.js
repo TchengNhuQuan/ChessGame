@@ -9,7 +9,7 @@ function Row(line) {
       cell.render();
       this.block.appendChild(cell.block);
     }
-  };
+  }
 
   function initElement() {
     const rowElement = document.createElement("div");
