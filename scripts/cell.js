@@ -56,10 +56,13 @@ function Cell(x, y, color) {
     switch(cell.piece.getName()) {
       case "pawn": 
         cell.piece.checkPawnMove(cell.getPositionX(), cell.getPositionY(), cell.piece.isWhite, event);
+        break;
       case "queen": 
         cell.piece.checkQueenMove(cell.getPositionX(), cell.getPositionY(), event);
+        break;
       case "bishop": 
         cell.piece.checkBishopMove(cell.getPositionX(), cell.getPositionY(), event);
+        break;
       case "king":
         cell.piece.checkKingMove(cell.getPositionX(), cell.getPositionY(),cell.piece.isWhite)
     }
@@ -86,12 +89,23 @@ function Cell(x, y, color) {
     board.render();
   }
 
+  function handleUnselectChessAdvance(cell) {
+    cell.isSelected = true;
+    // lấy lại màu ban đầu
+    renderInitialColor(cell);
+    // check hint move
+    unSelectHintMove();
+    board.render();
+  }
+
+
   this.block.addEventListener("click", (event) => this.validateMove(event));
   this.validateMove = function(event) {
     if (this.isSelected == true) {
       handleUnselectChess(this);
       board.render();
     } else {
+      handleUnselectChessAdvance(this);
       handleSelectChess(event, this);
     }
   }
