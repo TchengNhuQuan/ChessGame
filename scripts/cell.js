@@ -60,6 +60,8 @@ function Cell(x, y, color) {
         cell.piece.checkQueenMove(cell.getPositionX(), cell.getPositionY(), event);
       case "bishop": 
         cell.piece.checkBishopMove(cell.getPositionX(), cell.getPositionY(), event);
+      case "king":
+        cell.piece.checkKingMove(cell.getPositionX(), cell.getPositionY(),cell.piece.isWhite)
     }
   }
 
