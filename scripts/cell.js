@@ -76,8 +76,6 @@ function Cell(x, y, color) {
   }
 
   function handleUnselectChess(cell) {
-    console.log("nó đã được unselect");
-    console.log(cell);
     cell.isSelected = false;
     // lấy lại màu ban đầu
     renderInitialColor(cell);

@@ -89,9 +89,6 @@ function Board() {
 
     const blackRook2 = new Rook(false);
     this.putChess(0, 7, blackRook2);
-
-    const demoQueen = new Queen(true);
-    this.putChess(4, 4, demoQueen);
     
     for (let rowNumber = 0; rowNumber <= this.rowNumbers; rowNumber++) {
       if (rowNumber == 6) {
