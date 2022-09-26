@@ -81,6 +81,18 @@ function Cell(x, y, color) {
     }
   }
 
+  function unSelectIsSelectedPiece() {
+    for (let rowNumber = 0; rowNumber < 8; rowNumber++) {
+      for (let columnNumber = 0; columnNumber < 8; columnNumber++) {
+        let cell = board.rows[rowNumber].cells[columnNumber];
+        if (cell.isSelected == true) {
+          cell.isSelected = false;
+        }
+        renderInitialColor(cell);
+      }
+    }
+  }
+
   function handleUnselectChess(cell) {
     cell.isSelected = false;
     // lấy lại màu ban đầu
@@ -90,14 +102,14 @@ function Cell(x, y, color) {
     board.render();
   }
 
-  function handleUnselectChessAdvance(cell) {
-    cell.isSelected = true;
-    // lấy lại màu ban đầu
-    renderInitialColor(cell);
-    // check hint move
-    unSelectHintMove();
-    board.render();
-  }
+  // function handleUnselectChessAdvance(cell) {
+  //   cell.isSelected = true;
+  //   // lấy lại màu ban đầu
+  //   // renderInitialColor(cell);
+  //   // check hint move
+  //   unSelectHintMove();
+  //   board.render();
+  // }
 
 
   this.block.addEventListener("click", (event) => this.validateMove(event));
@@ -106,7 +118,7 @@ function Cell(x, y, color) {
       handleUnselectChess(this);
       board.render();
     } else {
-      handleUnselectChessAdvance(this);
+      unSelectIsSelectedPiece();
       handleSelectChess(event, this);
     }
   }
