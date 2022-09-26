@@ -56,12 +56,16 @@ function Cell(x, y, color) {
     switch(cell.piece.getName()) {
       case "pawn": 
         cell.piece.checkPawnMove(cell.getPositionX(), cell.getPositionY(), cell.piece.isWhite, event);
+        break;
       case "queen": 
         cell.piece.checkQueenMove(cell.getPositionX(), cell.getPositionY(), event);
+        break;
       case "bishop": 
         cell.piece.checkBishopMove(cell.getPositionX(), cell.getPositionY(), event);
+        break;
       case "king":
         cell.piece.checkKingMove(cell.getPositionX(), cell.getPositionY(),cell.piece.isWhite)
+        break;
     }
   }
 
