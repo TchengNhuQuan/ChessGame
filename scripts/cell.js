@@ -37,31 +37,64 @@ function Cell(x, y, color) {
     }
     if (this.isSelected == true) {
       this.block.style.backgroundColor = this.color;
-    }
+    } 
     if (this.isHintMove == true) {
       this.block.style.backgroundColor = this.color;
+    } 
+    this.block.style.backgroundColor = this.color;
+  }
+
+  function renderInitialColor(cell) {
+    if (cell.getPositionX() % 2 ==0) {
+      cell.color = cell.getPositionY() % 2 == 0 ? "#EEEED2" : "#4B7399";
+    } else {
+      cell.color = cell.getPositionY() % 2 == 0 ? "#4B7399" : "#EEEED2";
     }
+  }
+
+  function handleSelectChess(event, cell) {
+    switch(cell.piece.getName()) {
+      case "pawn": 
+        cell.piece.checkPawnMove(cell.getPositionX(), cell.getPositionY(), cell.piece.isWhite, event);
+      case "queen": 
+        cell.piece.checkQueenMove(cell.getPositionX(), cell.getPositionY(), event);
+      case "bishop": 
+        cell.piece.checkBishopMove(cell.getPositionX(), cell.getPositionY(), event);
+    }
+  }
+
+  function unSelectHintMove() {
+    for (let rowNumber = 0; rowNumber < 8; rowNumber++) {
+      for (let columnNumber = 0; columnNumber < 8; columnNumber++) {
+        let cell = board.rows[rowNumber].cells[columnNumber];
+        if (cell.isHintMove == true) {
+          cell.isHintMove = false;
+        }
+        renderInitialColor(cell);
+      }
+    }
+  }
+
+  function handleUnselectChess(cell) {
+    console.log("nó đã được unselect");
+    console.log(cell);
+    cell.isSelected = false;
+    // lấy lại màu ban đầu
+    renderInitialColor(cell);
+    // check hint move
+    unSelectHintMove();
+    board.render();
   }
 
   this.block.addEventListener("click", (event) => this.validateMove(event));
   this.validateMove = function(event) {
-    // console.log(this.piece.getName());
-    switch(this.piece.getName()) {
-      case "pawn": 
-        this.piece.checkPawnMove(this.getPositionX(), this.getPositionY(), this.piece.isWhite, event);
-        // console.log(this.getPositionX());
-        // console.log(this.getPositionY());
-
-      case "queen": 
-        this.piece.checkQueenMove(this.getPositionX(), this.getPositionY(), event);
-      
-        case "bishop": 
-        this.piece.checkBishopMove(this.getPositionX(), this.getPositionY(), event);
+    if (this.isSelected == true) {
+      handleUnselectChess(this);
+      board.render();
+    } else {
+      handleSelectChess(event, this);
     }
   }
-
-
-
 }
 
   
