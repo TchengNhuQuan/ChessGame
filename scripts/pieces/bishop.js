@@ -5,4 +5,13 @@ function Bishop(isWhite, isKilled = false) {
   function canMove(board, cellStart, cellEnd) {
     
   }
+
+  this.checkBishopMove = function checkBishopMove (x, y) {
+    return [
+      this.moveUpRight(x, y),
+      this.moveUpLeft(x, y),
+      this.moveDownLeft(x, y),
+      this.moveDownRight(x, y)
+    ]
+  }
 }

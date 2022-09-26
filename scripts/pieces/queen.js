@@ -7,4 +7,16 @@ function Queen(isWhite, isKilled = false) {
   function canMove(board, cellStart, cellEnd) {
     
   }
+  this.checkQueenMove = function checkQueenMove (x, y) {
+    return [
+      this.moveUp(x, y),
+      this.moveDown(x, y),
+      this.moveRight(x, y),
+      this.moveLeft(x, y),
+      this.moveUpRight(x, y),
+      this.moveUpLeft(x, y),
+      this.moveDownLeft(x, y),
+      this.moveDownRight(x, y)
+    ]
+  }
 }
