@@ -90,12 +90,23 @@ function Cell(x, y, color) {
     board.render();
   }
 
+  function handleUnselectChessAdvance(cell) {
+    cell.isSelected = true;
+    // lấy lại màu ban đầu
+    renderInitialColor(cell);
+    // check hint move
+    unSelectHintMove();
+    board.render();
+  }
+
+
   this.block.addEventListener("click", (event) => this.validateMove(event));
   this.validateMove = function(event) {
     if (this.isSelected == true) {
       handleUnselectChess(this);
       board.render();
     } else {
+      handleUnselectChessAdvance(this);
       handleSelectChess(event, this);
     }
   }
