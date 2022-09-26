@@ -37,6 +37,7 @@ function Cell(x, y, color) {
     }
     if (this.isSelected == true) {
       this.block.style.backgroundColor = this.color;
+      this.piece.block.style.transform = 'translate(-50%, -63%)';
     } 
     if (this.isHintMove == true) {
       this.block.style.backgroundColor = this.color;
@@ -54,7 +55,7 @@ function Cell(x, y, color) {
 
   function handleSelectChess(event, cell) {
     switch(cell.piece.getName()) {
-      case "pawn": 
+      case "pawn":
         cell.piece.checkPawnMove(cell.getPositionX(), cell.getPositionY(), cell.piece.isWhite, event);
         break;
       case "queen": 
@@ -69,6 +70,8 @@ function Cell(x, y, color) {
       case "knight":
         cell.piece.checkKnightMove(cell.getPositionX(), cell.getPositionY())
         break;
+      case "rook":
+        cell.piece.checkRookMove(cell.getPositionX(), cell.getPositionY(), event);
     }
   }
 
@@ -98,6 +101,7 @@ function Cell(x, y, color) {
 
   function handleUnselectChess(cell) {
     cell.isSelected = false;
+    cell.piece.block.style.transform = 'translate(-50%, -50%)';
     // lấy lại màu ban đầu
     renderInitialColor(cell);
     // check hint move
