@@ -45,12 +45,18 @@ function Cell(x, y, color) {
 
   this.block.addEventListener("click", (event) => this.validateMove(event));
   this.validateMove = function(event) {
-    console.log(this.piece.getName());
+    // console.log(this.piece.getName());
     switch(this.piece.getName()) {
       case "pawn": 
         this.piece.checkPawnMove(this.getPositionX(), this.getPositionY(), this.piece.isWhite, event);
         // console.log(this.getPositionX());
         // console.log(this.getPositionY());
+
+      case "queen": 
+        this.piece.checkQueenMove(this.getPositionX(), this.getPositionY(), event);
+      
+        case "bishop": 
+        this.piece.checkBishopMove(this.getPositionX(), this.getPositionY(), event);
     }
   }
 

@@ -32,6 +32,94 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
     return imgElement;
   }
 
+  this.moveUp = function moveUp(x, y) {
+    board.rows[x].cells[y].isSelected = true;
+    board.rows[x].cells[y].color="#BACA2B";
+    for (let i = 0; i < 8; i++) {
+      if (x + i > 7) break;
+      board.rows[x + i].cells[y].isHintMove = true;
+      board.rows[x + i].cells[y].color="#BACA2B";
+      board.render();
+    }
+    
+  }
 
+  this.moveDown = function moveDown(x, y) {
+    board.rows[x].cells[y].isSelected = true;
+    board.rows[x].cells[y].color="#BACA2B";
+    for (let i = 0 ; i < 8; i++) {
+      if (x - i < 0) break;
+      board.rows[x - i].cells[y].isHintMove = true;
+      board.rows[x - i].cells[y].color="#BACA2B";
+      board.render();
+    }
+    
+  }
+
+  this.moveRight = function moveRight(x, y) {
+    board.rows[x].cells[y].isSelected = true;
+    board.rows[x].cells[y].color="#BACA2B";
+    for (let i = 0; i < 8; i++) {
+      if (y + i > 7) break;
+      board.rows[x].cells[y + i].isHintMove = true;
+      board.rows[x].cells[y + i].color="#BACA2B";
+      board.render();
+    }
+  }
+
+  this.moveLeft = function moveLeft(x, y) {
+    board.rows[x].cells[y].isSelected = true;
+    board.rows[x].cells[y].color="#BACA2B";
+    for (let i = 0; i < 8; i++) {
+      if (y - i < 0) break;
+      board.rows[x].cells[y - i].isHintMove = true;
+      board.rows[x].cells[y - i].color="#BACA2B";
+      board.render();
+    }
+  }
+
+  this.moveUpRight = function moveUpRight(x, y) {
+    board.rows[x].cells[y].isSelected = true;
+    board.rows[x].cells[y].color="#BACA2B";
+    for (let i = 0; i < 8; i++) {
+      if (x + i > 7 || y + i > 7) break;
+      board.rows[x + i].cells[y + i].isHintMove = true;
+      board.rows[x + i].cells[y + i].color="#BACA2B";
+      board.render();
+    }
+  }
+
+  this.moveUpLeft = function moveUpLeft(x, y) {
+    board.rows[x].cells[y].isSelected = true;
+    board.rows[x].cells[y].color="#BACA2B";
+    for (let i = 0; i < 8; i++) {
+      if (x + i > 7 || y - i < 0) break;
+      board.rows[x + i].cells[y - i].isHintMove = true;
+      board.rows[x + i].cells[y - i].color="#BACA2B";
+      board.render();
+    }
+  }
+
+  this.moveDownLeft = function moveDownLeft(x, y) {
+    board.rows[x].cells[y].isSelected = true;
+    board.rows[x].cells[y].color="#BACA2B";
+    for (let i = 0; i < 8; i++) {
+      if (x - i < 0 || y - i < 0) break;
+      board.rows[x - i].cells[y - i].isHintMove = true;
+      board.rows[x - i].cells[y - i].color="#BACA2B";
+      board.render();
+    }
+  }
+
+  this.moveDownRight = function moveDownRight(x, y) {
+    board.rows[x].cells[y].isSelected = true;
+    board.rows[x].cells[y].color="#BACA2B";
+    for (let i = 0; i < 8; i++) {
+      if (x - i < 0 || y + i > 7) break;
+      board.rows[x - i].cells[y + i].isHintMove = true;
+      board.rows[x - i].cells[y + i].color="#BACA2B";
+      board.render();
+    }
+  }
 }
 

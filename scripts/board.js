@@ -113,7 +113,7 @@ function Board() {
       row.render(); // y la cai render tu dong row
       this.block.appendChild(row.block);
     }
-    console.log(this.rows);
+    // console.log(this.rows);
   };
 
   this.init = function () {
