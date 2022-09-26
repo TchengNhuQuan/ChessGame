@@ -116,6 +116,6 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
   }
 }
   
-  }
-}
+  
+
 
