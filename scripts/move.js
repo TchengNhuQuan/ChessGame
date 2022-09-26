@@ -4,4 +4,9 @@ function Move(user, start, end, pieceMove, pieceKilled)  {
  this.end = end;
  this.pieceMove = pieceMove;
  this.pieceKilled = pieceKilled;
+
+
+
+ 
+
 }

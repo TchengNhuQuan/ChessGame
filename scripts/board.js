@@ -36,17 +36,17 @@ function Board() {
     // đặt quân cờ bằng private method
     const whiteKing = new King(true);
     this.putChess(7, 4, whiteKing);
-    for (let rowNumber = 0; rowNumber < this.rowNumbers; rowNumber++) {
-      if (rowNumber == 0) {
-        for (let columnNumber = 0; columnNumber < this.columnNumbers; columnNumber++) {
-          if (columnNumber == 4) {
-            this.putChess(rowNumber, columnNumber, new King(false))
-          }
-        }
-      }
-    }
-    // const blackKing = new King(false);
-    // this.putChess(0, 4, blackKing);
+    // for (let rowNumber = 0; rowNumber < this.rowNumbers; rowNumber++) {
+    //   if (rowNumber == 0) {
+    //     for (let columnNumber = 0; columnNumber < this.columnNumbers; columnNumber++) {
+    //       if (columnNumber == 4) {
+    //         this.putChess(rowNumber, columnNumber, new King(false))
+    //       }
+    //     }
+    //   }
+    // }
+     const blackKing = new King(false);
+     this.putChess(0, 4, blackKing);
 
     const whiteQueen = new Queen(true);
     this.putChess(7, 3, whiteQueen);
