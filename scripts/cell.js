@@ -114,6 +114,8 @@ function Cell(x, y, color) {
   //   board.render();
   // }
 
+  //this is a test sentence.
+
 
   this.block.addEventListener("click", (event) => this.validateMove(event));
   this.validateMove = function(event) {
