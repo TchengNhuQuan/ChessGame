@@ -35,7 +35,7 @@ function Board() {
   this.initChess = function() { 
     // đặt quân cờ bằng private method
     const whiteKing = new King(true);
-    this.putChess(7, 4, whiteKing);
+    this.putChess(4, 4, whiteKing);
     // for (let rowNumber = 0; rowNumber < this.rowNumbers; rowNumber++) {
     //   if (rowNumber == 0) {
     //     for (let columnNumber = 0; columnNumber < this.columnNumbers; columnNumber++) {
@@ -46,49 +46,49 @@ function Board() {
     //   }
     // }
      const blackKing = new King(false);
-     this.putChess(0, 4, blackKing);
+     this.putChess(3, 4, blackKing);
 
     const whiteQueen = new Queen(true);
-    this.putChess(7, 3, whiteQueen);
+    this.putChess(4, 3, whiteQueen);
 
     const blackQueen = new Queen(false);
-    this.putChess(0, 3, blackQueen );
+    this.putChess(3, 5, blackQueen );
 
     const whiteBishop1 = new Bishop(true);
-    this.putChess(7, 2, whiteBishop1);
+    this.putChess(2, 3, whiteBishop1);
 
     const whiteBishop2 = new Bishop(true);
-    this.putChess(7, 5, whiteBishop2);
+    this.putChess(4, 5, whiteBishop2);
 
     const blackBishop1 = new Bishop(false);
-    this.putChess(0, 2, blackBishop1);
+    this.putChess(4, 2, blackBishop1);
 
     const blackBishop2 = new Bishop(false);
-    this.putChess(0, 5, blackBishop2);
+    this.putChess(5, 5, blackBishop2);
     
     const whiteKnight1 = new Knight(true);
-    this.putChess(7, 1, whiteKnight1);
+    this.putChess(2, 5, whiteKnight1);
 
     const whiteKnight2 = new Knight(true);
     this.putChess(7, 6, whiteKnight2);
 
     const blackKnight1 = new Knight(false);
-    this.putChess(0, 1, blackKnight1);
+    this.putChess(2, 4, blackKnight1);
 
     const blackKnight2 = new Knight(false);
     this.putChess(0, 6, blackKnight2);
 
     const whiteRook1 = new Rook(true);
-    this.putChess(7, 0, whiteRook1);
+    this.putChess(3, 2, whiteRook1);
 
     const whiteRook2 = new Rook(true);
     this.putChess(7, 7, whiteRook2);
 
     const blackRook1 = new Rook(false);
-    this.putChess(0, 0, blackRook1);
+    this.putChess(5, 3, blackRook1);
 
     const blackRook2 = new Rook(false);
-    this.putChess(0, 7, blackRook2);
+    this.putChess(5, 4, blackRook2);
     
     for (let rowNumber = 0; rowNumber <= this.rowNumbers; rowNumber++) {
       if (rowNumber == 6) {
@@ -113,7 +113,8 @@ function Board() {
       row.render(); // y la cai render tu dong row
       this.block.appendChild(row.block);
     }
-    // console.log(this.rows);
+      // console.log(this.rows.length);
+    
   };
 
   this.init = function () {

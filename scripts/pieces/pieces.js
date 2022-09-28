@@ -3,10 +3,15 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
   this.imageUrl = imageUrl
   this.isWhite = isWhite
   this.isKilled = isKilled
+  this.isCapturable = this.pieceName
+  
   this.block = initElement(imageUrl)
   this.getName = function() {
     return this.pieceName;
   }
+
+  
+  
 
   function canMove(board, cellStart, cellEnd) {
 
@@ -25,16 +30,20 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
     return imgElement;
   }
 
+
+
+
   this.moveUp = function moveUp(x, y) {
     board.rows[x].cells[y].isSelected = true;
     board.rows[x].cells[y].color="#BACA2B";
     for (let i = 0; i < 8; i++) {
       if (x + i > 7) break;
+      
       board.rows[x + i].cells[y].isHintMove = true;
       board.rows[x + i].cells[y].color="#BACA2B";
       board.render();
     }
-    
+  
   }
 
   this.moveDown = function moveDown(x, y) {
@@ -42,6 +51,7 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
     board.rows[x].cells[y].color="#BACA2B";
     for (let i = 0 ; i < 8; i++) {
       if (x - i < 0) break;
+      // if (this.imageUrl) break;
       board.rows[x - i].cells[y].isHintMove = true;
       board.rows[x - i].cells[y].color="#BACA2B";
       board.render();

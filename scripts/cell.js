@@ -6,6 +6,9 @@ function Cell(x, y, color) {
   this.isActive = false;
   this.isSelected = false;
   this.isHintMove = false;
+
+  
+  
   this.block = initElement(this.color);
 
   this.setPiece = function (currentPiece) {
@@ -37,11 +40,15 @@ function Cell(x, y, color) {
     }
     if (this.isSelected == true) {
       this.block.style.backgroundColor = this.color;
-      this.piece.block.style.transform = 'translate(-50%, -63%)';
+      // this.piece.block.style.transform = 'translate(-50%, -63%)';
     } 
     if (this.isHintMove == true) {
       this.block.style.backgroundColor = this.color;
     } 
+    // if (this.isCapturable == true) {
+    //   this.block.style.backgroundColor = this.color
+    // }
+  
     this.block.style.backgroundColor = this.color;
   }
 
@@ -56,16 +63,19 @@ function Cell(x, y, color) {
   function handleSelectChess(event, cell) {
     switch(cell.piece.getName()) {
       case "pawn":
+         
         cell.piece.checkPawnMove(cell.getPositionX(), cell.getPositionY(), cell.piece.isWhite, event);
+         
         break;
       case "queen": 
         cell.piece.checkQueenMove(cell.getPositionX(), cell.getPositionY(), event);
+        // console.log(cell.piece.checkQueenMove(cell.getPositionX(), cell.getPositionY(), event).length);
         break;
       case "bishop": 
         cell.piece.checkBishopMove(cell.getPositionX(), cell.getPositionY(), event);
         break;
       case "king":
-        cell.piece.checkKingMove(cell.getPositionX(), cell.getPositionY(),cell.piece.isWhite);
+        cell.piece.checkKingMove(cell.getPositionX(), cell.getPositionY()) 
         break;
       case "knight":
         cell.piece.checkKnightMove(cell.getPositionX(), cell.getPositionY())
@@ -99,6 +109,9 @@ function Cell(x, y, color) {
     }
   }
 
+
+  
+
   function handleUnselectChess(cell) {
     cell.isSelected = false;
     cell.piece.block.style.transform = 'translate(-50%, -50%)';
@@ -108,6 +121,15 @@ function Cell(x, y, color) {
     unSelectHintMove();
     board.render();
   }
+
+
+  // this.checkEnemy = function(){
+  //   if (this.checkKingMove() == cell.piece.block)
+  //   console.log("red")
+  // }
+
+
+
 
   // function handleUnselectChessAdvance(cell) {
   //   cell.isSelected = true;
@@ -123,10 +145,14 @@ function Cell(x, y, color) {
   this.validateMove = function(event) {
     if (this.isSelected == true) {
       handleUnselectChess(this);
+      
       board.render();
     } else {
       unSelectIsSelectedPiece();
+      // renderInitialColor(this)
       handleSelectChess(event, this);
+      
+      // console.log(this.isCapturable)
     }
   }
 }
