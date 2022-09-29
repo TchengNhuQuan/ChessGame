@@ -33,20 +33,33 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
 
 
 
-  this.moveUp = function moveUp(x, y) {
+  this.moveDown = function (x, y) {
     board.rows[x].cells[y].isSelected = true;
     board.rows[x].cells[y].color="#BACA2B";
     for (let i = 0; i < 8; i++) {
       if (x + i > 7) break;
       
       board.rows[x + i].cells[y].isHintMove = true;
+
+      if (board.rows[x+i].cells[y].piece == null){
+        board.rows[x+i].cells[y].color="#BACA2B"
+     } else if( this.isWhite ==true && board.rows[x+i].cells[y].isHintMove == true && board.rows[x+i].cells[y].piece.isWhite == false ) {
+         board.rows[x+i].cells[y].color="red"; break;
+      } else if(this.isWhite ==false && board.rows[x+i].cells[y].isHintMove == true && board.rows[x+i].cells[y].piece.isWhite == true){
+       board.rows[x+i].cells[y].color="red"; break;
+        }else if (this.isWhite ==false && board.rows[x+i].cells[y-i].isHintMove == false && board.rows[x+i].cells[y].piece.isWhite == false) {
+          board.rows[x+i].cells[y].color = this.color; break;
+       }else if (this.isWhite == true && board.rows[x+i].cells[y-i].isHintMove == false && board.rows[x+i].cells[y].piece.isWhite == true) {
+           board.rows[x+i].cells[y].color = this.color; break;
+        } else {
+
       board.rows[x + i].cells[y].color="#BACA2B";
       board.render();
     }
-  
+    }
   }
 
-  this.moveDown = function moveDown(x, y) {
+  this.moveUp = function (x, y) {
     board.rows[x].cells[y].isSelected = true;
     board.rows[x].cells[y].color="#BACA2B";
     for (let i = 0 ; i < 8; i++) {

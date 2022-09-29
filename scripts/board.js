@@ -35,7 +35,7 @@ function Board() {
   this.initChess = function() { 
     // đặt quân cờ bằng private method
     const whiteKing = new King(true);
-    this.putChess(4, 4, whiteKing);
+    this.putChess(3, 3, whiteKing);
     // for (let rowNumber = 0; rowNumber < this.rowNumbers; rowNumber++) {
     //   if (rowNumber == 0) {
     //     for (let columnNumber = 0; columnNumber < this.columnNumbers; columnNumber++) {
@@ -58,7 +58,7 @@ function Board() {
     this.putChess(2, 3, whiteBishop1);
 
     const whiteBishop2 = new Bishop(true);
-    this.putChess(4, 5, whiteBishop2);
+    this.putChess(4, 6, whiteBishop2);
 
     const blackBishop1 = new Bishop(false);
     this.putChess(4, 2, blackBishop1);
@@ -85,7 +85,7 @@ function Board() {
     this.putChess(7, 7, whiteRook2);
 
     const blackRook1 = new Rook(false);
-    this.putChess(5, 3, blackRook1);
+    this.putChess(5, 2, blackRook1);
 
     const blackRook2 = new Rook(false);
     this.putChess(5, 4, blackRook2);

@@ -65,7 +65,8 @@ this.moveKingLeft = function(x,y){
   board.rows[x].cells[y].color="#BACA2B";
   for (i = 0 ; i <2 ; i++) {
     if(y-i < 0) break;
-  board.rows[x].cells[y-1].isHintMove = false;
+
+  // board.rows[x].cells[y-i].isHintMove = false;
 
   if (board.rows[x].cells[y-i].piece == null){
     board.rows[x].cells[y-i].color="#BACA2B"
@@ -226,7 +227,7 @@ this.moveOut = function(){
          this.moveKingDownLeft(x,y),
          this.moveKingDownRight(x,y),
          this.moveKingLeft(x,y),
-         this.moveKingLeft(x,y)
+         this.moveKingLeft(x,y) // cái thêm vào
     
 
       ]
