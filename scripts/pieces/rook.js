@@ -12,7 +12,7 @@ function Rook(isWhite, isKilled = false) {
       this.moveDown(x, y),
       this.moveLeft(x, y),
       this.moveRight(x, y),
-      this.moveRight(x,y)
+      this.moveRight(x,y) // add them
     ]
   }
 }

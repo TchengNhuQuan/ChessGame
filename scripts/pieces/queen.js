@@ -17,7 +17,7 @@ function Queen(isWhite, isKilled = false) {
       this.moveUpLeft(x, y),
       this.moveDownLeft(x, y),
       this.moveDownRight(x, y),
-      this.moveDownRight(x, y)
+      this.moveDownRight(x, y) // add them do bug (xoa thi dong dong cuoi ko chay y chang rook , king, bishop)
     ]
   }
 }
