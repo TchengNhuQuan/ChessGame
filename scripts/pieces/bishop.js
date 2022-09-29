@@ -11,7 +11,9 @@ function Bishop(isWhite, isKilled = false) {
       this.moveUpRight(x, y),
       this.moveUpLeft(x, y),
       this.moveDownLeft(x, y),
-      this.moveDownRight(x, y)
+      this.moveDownRight(x, y),
+      this.moveDownRight(x, y) // add vo
+      
     ]
   }
 }

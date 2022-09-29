@@ -33,24 +33,33 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
 
 
 
+  // do king chi di 1, 
+  //Queen , bishop va rook lai di nhieu o nen thay isHintMove = isSelected ( xem 57, 60 va tuong tu o duoi)
+
   this.moveDown = function (x, y) {
     board.rows[x].cells[y].isSelected = true;
     board.rows[x].cells[y].color="#BACA2B";
     for (let i = 0; i < 8; i++) {
       if (x + i > 7) break;
       
-      board.rows[x + i].cells[y].isHintMove = true;
+          board.rows[x + i].cells[y].isHintMove = true;
 
       if (board.rows[x+i].cells[y].piece == null){
-        board.rows[x+i].cells[y].color="#BACA2B"
+        board.rows[x+i].cells[y].color="#BACA2B" ; 
+        
      } else if( this.isWhite ==true && board.rows[x+i].cells[y].isHintMove == true && board.rows[x+i].cells[y].piece.isWhite == false ) {
-         board.rows[x+i].cells[y].color="red"; break;
+         board.rows[x+i].cells[y].color="red";
+         break;
       } else if(this.isWhite ==false && board.rows[x+i].cells[y].isHintMove == true && board.rows[x+i].cells[y].piece.isWhite == true){
-       board.rows[x+i].cells[y].color="red"; break;
-        }else if (this.isWhite ==false && board.rows[x+i].cells[y-i].isHintMove == false && board.rows[x+i].cells[y].piece.isWhite == false) {
-          board.rows[x+i].cells[y].color = this.color; break;
-       }else if (this.isWhite == true && board.rows[x+i].cells[y-i].isHintMove == false && board.rows[x+i].cells[y].piece.isWhite == true) {
-           board.rows[x+i].cells[y].color = this.color; break;
+       board.rows[x+i].cells[y].color="red";
+        break;
+      
+        } else if (this.isWhite ==false && board.rows[x+i].cells[y].isSelected ==false && board.rows[x+i].cells[y].piece.isWhite == false) {
+          board.rows[x+i].cells[y].color = this.color; 
+           break;
+        }else if (this.isWhite == true && board.rows[x+i].cells[y].isSelected == false && board.rows[x+i].cells[y].piece.isWhite == true) {
+            board.rows[x+i].cells[y].color = this.color; 
+             break;
         } else {
 
       board.rows[x + i].cells[y].color="#BACA2B";
@@ -65,11 +74,30 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
     for (let i = 0 ; i < 8; i++) {
       if (x - i < 0) break;
       // if (this.imageUrl) break;
-      board.rows[x - i].cells[y].isHintMove = true;
+       board.rows[x - i].cells[y].isHintMove = true;
+       if (board.rows[x-i].cells[y].piece == null){
+        board.rows[x-i].cells[y].color="#BACA2B" ; 
+        
+     } else if( this.isWhite ==true && board.rows[x-i].cells[y].isHintMove == true && board.rows[x-i].cells[y].piece.isWhite == false ) {
+         board.rows[x-i].cells[y].color="red";
+         break;
+      } else if(this.isWhite ==false && board.rows[x-i].cells[y].isHintMove == true && board.rows[x-i].cells[y].piece.isWhite == true){
+       board.rows[x-i].cells[y].color="red";
+        break;
+      
+        } else if (this.isWhite ==false && board.rows[x-i].cells[y].isSelected ==false && board.rows[x-i].cells[y].piece.isWhite == false) {
+          board.rows[x-i].cells[y].color = this.color; 
+           break;
+        }else if (this.isWhite == true && board.rows[x-i].cells[y].isSelected == false && board.rows[x-i].cells[y].piece.isWhite == true) {
+            board.rows[x-i].cells[y].color = this.color; 
+             break;
+        } else {
+
+      
       board.rows[x - i].cells[y].color="#BACA2B";
       board.render();
     }
-    
+  }
   }
 
   this.moveRight = function moveRight(x, y) {
@@ -78,9 +106,29 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
     for (let i = 0; i < 8; i++) {
       if (y + i > 7) break;
       board.rows[x].cells[y + i].isHintMove = true;
+
+      if (board.rows[x].cells[y+i].piece == null){
+        board.rows[x].cells[y+i].color="#BACA2B" ; 
+        
+     } else if( this.isWhite ==true && board.rows[x].cells[y+i].isHintMove == true && board.rows[x].cells[y+i].piece.isWhite == false ) {
+         board.rows[x].cells[y+i].color="red";
+         break;
+      } else if(this.isWhite ==false && board.rows[x].cells[y+i].isHintMove == true && board.rows[x].cells[y+i].piece.isWhite == true){
+       board.rows[x].cells[y+i].color="red";
+        break;
+      
+        } else if (this.isWhite ==false && board.rows[x].cells[y+i].isSelected ==false && board.rows[x].cells[y+i].piece.isWhite == false) {
+          board.rows[x].cells[y+i].color = this.color; 
+           break;
+        }else if (this.isWhite == true && board.rows[x].cells[y+i].isSelected == false && board.rows[x].cells[y+i].piece.isWhite == true) {
+            board.rows[x].cells[y+i].color = this.color; 
+             break;
+        } else {
+
       board.rows[x].cells[y + i].color="#BACA2B";
       board.render();
     }
+  }
   }
 
   this.moveLeft = function moveLeft(x, y) {
@@ -89,54 +137,153 @@ function Piece(isWhite, isKilled = false, pieceName, imageUrl) {
     for (let i = 0; i < 8; i++) {
       if (y - i < 0) break;
       board.rows[x].cells[y - i].isHintMove = true;
+
+      if (board.rows[x].cells[y-i].piece == null){
+        board.rows[x].cells[y-i].color="#BACA2B" ; 
+        
+     } else if( this.isWhite ==true && board.rows[x].cells[y-i].isHintMove == true && board.rows[x].cells[y-i].piece.isWhite == false ) {
+         board.rows[x].cells[y-i].color="red";
+         break;
+      } else if(this.isWhite ==false && board.rows[x].cells[y-i].isHintMove == true && board.rows[x].cells[y-i].piece.isWhite == true){
+       board.rows[x].cells[y-i].color="red";
+        break;
+      
+        } else if (this.isWhite ==false && board.rows[x].cells[y-i].isSelected ==false && board.rows[x].cells[y-i].piece.isWhite == false) {
+          board.rows[x].cells[y-i].color = this.color; 
+           break;
+        }else if (this.isWhite == true && board.rows[x].cells[y-i].isSelected == false && board.rows[x].cells[y-i].piece.isWhite == true) {
+            board.rows[x].cells[y-i].color = this.color; 
+             break;
+        } else {
+
       board.rows[x].cells[y - i].color="#BACA2B";
       board.render();
     }
   }
+  }
 
-  this.moveUpRight = function moveUpRight(x, y) {
+  this.moveDownRight = function moveUpRight(x, y) {
     board.rows[x].cells[y].isSelected = true;
     board.rows[x].cells[y].color="#BACA2B";
     for (let i = 0; i < 8; i++) {
       if (x + i > 7 || y + i > 7) break;
       board.rows[x + i].cells[y + i].isHintMove = true;
+
+      if (board.rows[x+i].cells[y+i].piece == null){
+        board.rows[x+i].cells[y+i].color="#BACA2B" ; 
+        
+     } else if( this.isWhite ==true && board.rows[x+i].cells[y+i].isHintMove == true && board.rows[x+i].cells[y+i].piece.isWhite == false ) {
+         board.rows[x+i].cells[y+i].color="red";
+         break;
+      } else if(this.isWhite ==false && board.rows[x+i].cells[y+i].isHintMove == true && board.rows[x+i].cells[y+i].piece.isWhite == true){
+       board.rows[x+i].cells[y+i].color="red";
+        break;
+      
+        } else if (this.isWhite ==false && board.rows[x+i].cells[y+i].isSelected ==false && board.rows[x+i].cells[y+i].piece.isWhite == false) {
+          board.rows[x+i].cells[y+i].color = this.color; 
+           break;
+        }else if (this.isWhite == true && board.rows[x+i].cells[y+i].isSelected == false && board.rows[x+i].cells[y+i].piece.isWhite == true) {
+            board.rows[x+i].cells[y+i].color = this.color; 
+             break;
+        } else {
+
       board.rows[x + i].cells[y + i].color="#BACA2B";
       board.render();
     }
   }
+}
 
-  this.moveUpLeft = function moveUpLeft(x, y) {
+  this.moveDownLeft = function (x, y) {
     board.rows[x].cells[y].isSelected = true;
     board.rows[x].cells[y].color="#BACA2B";
     for (let i = 0; i < 8; i++) {
       if (x + i > 7 || y - i < 0) break;
       board.rows[x + i].cells[y - i].isHintMove = true;
+
+      if (board.rows[x+i].cells[y-i].piece == null){
+        board.rows[x+i].cells[y-i].color="#BACA2B" ; 
+        
+     } else if( this.isWhite ==true && board.rows[x+i].cells[y-i].isHintMove == true && board.rows[x+i].cells[y-i].piece.isWhite == false ) {
+         board.rows[x+i].cells[y-i].color="red";
+         break;
+      } else if(this.isWhite ==false && board.rows[x+i].cells[y-i].isHintMove == true && board.rows[x+i].cells[y-i].piece.isWhite == true){
+       board.rows[x+i].cells[y-i].color="red";
+        break;
+      
+        } else if (this.isWhite ==false && board.rows[x+i].cells[y-i].isSelected ==false && board.rows[x+i].cells[y-i].piece.isWhite == false) {
+          board.rows[x+i].cells[y-i].color = this.color; 
+           break;
+        }else if (this.isWhite == true && board.rows[x+i].cells[y-i].isSelected == false && board.rows[x+i].cells[y-i].piece.isWhite == true) {
+            board.rows[x+i].cells[y-i].color = this.color; 
+             break;
+        } else {
+
       board.rows[x + i].cells[y - i].color="#BACA2B";
       board.render();
     }
   }
+  }
 
-  this.moveDownLeft = function moveDownLeft(x, y) {
+  this.moveUpLeft = function (x, y) {
     board.rows[x].cells[y].isSelected = true;
     board.rows[x].cells[y].color="#BACA2B";
     for (let i = 0; i < 8; i++) {
       if (x - i < 0 || y - i < 0) break;
       board.rows[x - i].cells[y - i].isHintMove = true;
+
+      if (board.rows[x-i].cells[y-i].piece == null){
+        board.rows[x-i].cells[y-i].color="#BACA2B" ; 
+        
+     } else if( this.isWhite ==true && board.rows[x-i].cells[y-i].isHintMove == true && board.rows[x-i].cells[y-i].piece.isWhite == false ) {
+         board.rows[x-i].cells[y-i].color="red";
+         break;
+      } else if(this.isWhite ==false && board.rows[x-i].cells[y-i].isHintMove == true && board.rows[x-i].cells[y-i].piece.isWhite == true){
+       board.rows[x-i].cells[y-i].color="red";
+        break;
+      
+        } else if (this.isWhite ==false && board.rows[x-i].cells[y-i].isSelected ==false && board.rows[x-i].cells[y-i].piece.isWhite == false) {
+          board.rows[x-i].cells[y-i].color = this.color; 
+           break;
+        }else if (this.isWhite == true && board.rows[x-i].cells[y-i].isSelected == false && board.rows[x-i].cells[y-i].piece.isWhite == true) {
+            board.rows[x-i].cells[y-i].color = this.color; 
+             break;
+        } else {
+
       board.rows[x - i].cells[y - i].color="#BACA2B";
       board.render();
     }
   }
-
-  this.moveDownRight = function moveDownRight(x, y) {
+  }
+  this.moveUpRight = function (x, y) {
     board.rows[x].cells[y].isSelected = true;
     board.rows[x].cells[y].color="#BACA2B";
     for (let i = 0; i < 8; i++) {
       if (x - i < 0 || y + i > 7) break;
       board.rows[x - i].cells[y + i].isHintMove = true;
+
+      if (board.rows[x-i].cells[y+i].piece == null){
+        board.rows[x-i].cells[y+i].color="#BACA2B" ; 
+        
+     } else if( this.isWhite ==true && board.rows[x-i].cells[y+i].isHintMove == true && board.rows[x-i].cells[y+i].piece.isWhite == false ) {
+         board.rows[x-i].cells[y+i].color="red";
+         break;
+      } else if(this.isWhite ==false && board.rows[x-i].cells[y+i].isHintMove == true && board.rows[x-i].cells[y+i].piece.isWhite == true){
+       board.rows[x-i].cells[y+i].color="red";
+        break;
+      
+        } else if (this.isWhite ==false && board.rows[x-i].cells[y+i].isSelected ==false && board.rows[x-i].cells[y+i].piece.isWhite == false) {
+          board.rows[x-i].cells[y+i].color = this.color; 
+           break;
+        }else if (this.isWhite == true && board.rows[x-i].cells[y+i].isSelected == false && board.rows[x-i].cells[y+i].piece.isWhite == true) {
+            board.rows[x-i].cells[y-i].color = this.color; 
+             break;
+        } else {
+
       board.rows[x - i].cells[y + i].color="#BACA2B";
       board.render();
     }
   }
+}
 }
   
   

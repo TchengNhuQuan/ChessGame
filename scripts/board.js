@@ -52,7 +52,7 @@ function Board() {
     this.putChess(4, 3, whiteQueen);
 
     const blackQueen = new Queen(false);
-    this.putChess(3, 5, blackQueen );
+    this.putChess(4, 4, blackQueen );
 
     const whiteBishop1 = new Bishop(true);
     this.putChess(2, 3, whiteBishop1);
@@ -64,7 +64,7 @@ function Board() {
     this.putChess(4, 2, blackBishop1);
 
     const blackBishop2 = new Bishop(false);
-    this.putChess(5, 5, blackBishop2);
+    this.putChess(5, 7, blackBishop2);
     
     const whiteKnight1 = new Knight(true);
     this.putChess(2, 5, whiteKnight1);
@@ -88,7 +88,7 @@ function Board() {
     this.putChess(5, 2, blackRook1);
 
     const blackRook2 = new Rook(false);
-    this.putChess(5, 4, blackRook2);
+    this.putChess(4, 0, blackRook2);
     
     for (let rowNumber = 0; rowNumber <= this.rowNumbers; rowNumber++) {
       if (rowNumber == 6) {
